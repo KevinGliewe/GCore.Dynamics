@@ -1,0 +1,22 @@
+<Project>
+
+  <!-- Suppress default attributes created by the compiler to prevent duplicate attribute errors -->
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+  </PropertyGroup>
+
+  <Target Name="GenerateVersionInfo" BeforeTargets="CoreCompile">
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet tool run rw-project-version -- -s=git -t=cs -v=&quot;$(VersionPrefix)&quot; -m=&quot;$(VersionSuffix)&quot;" />
+    <ItemGroup>
+      <Compile Remove="Properties\VersionInfo.cs" />
+      <Compile Include="Properties\VersionInfo.cs" />
+    </ItemGroup>
+  </Target>
+
+</Project>

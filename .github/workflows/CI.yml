@@ -1,0 +1,24 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+
+      - name: Install .NET (v6.0)
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore
+        run: dotnet restore
+        env:
+          DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
+
+      - name: Build & test (.NET v6.0)
+        run: dotnet test --configuration Release --logger GitHubActions --framework net6.0
