@@ -12,9 +12,9 @@
     <Authors>$(Company)</Authors>
     <Description></Description>
     <PackageTags></PackageTags>
-    <PackageProjectUrl>https://kevingliewe.github.io/GCore.Json/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinGliewe/GCore.Json</RepositoryUrl>
-    <PackageReleaseNotes>https://github.com/KevinGliewe/GCore.Json/blob/master/Changelog.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://kevingliewe.github.io/GCore.Dynamics.Json/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinGliewe/GCore.Dynamics.Json</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/KevinGliewe/GCore.Dynamics.Json/blob/master/Changelog.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

@@ -11,4 +11,10 @@
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GCore.Dynamics\GCore.Dynamics.csproj" />
+  </ItemGroup>
 </Project>

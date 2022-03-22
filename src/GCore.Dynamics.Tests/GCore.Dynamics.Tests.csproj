@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\Tests.Build.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\GCore.Dynamics\GCore.Dynamics.csproj" />
+  </ItemGroup>
+</Project>
