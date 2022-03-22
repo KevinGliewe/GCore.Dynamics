@@ -177,6 +177,30 @@ public class DynamicList : DynamicObject, IList<object?>, IReadOnlyable, ISimpli
         return (dynamic?)Query(new IQueryable.AccessorQuery(query));
     }
 
+    public dynamic? QueryNull(string query)
+    {
+        try
+        {
+            return Query(query);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public dynamic? QueryNull(IEnumerable<string> query)
+    {
+        try
+        {
+            return Query(query);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
     protected object? Query(IQueryable.AccessorQuery query)
     {
         return query.Access(this);

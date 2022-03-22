@@ -1,4 +1,5 @@
-﻿using GCore.Dynamics;
+﻿using System;
+using GCore.Dynamics;
 using GCore.Dynamics.Extensions;
 using NUnit.Framework;
 
@@ -84,5 +85,27 @@ public class AccessQueryTests
         var result = q.Access(new { TestMember = FromSimpleTests.MiscDictionary }.ToDynamic());
 
         Assert.AreEqual(FromSimpleTests.IntArray[1], result);
+    }
+
+    [Test]
+    public void AccessFail()
+    {
+        var q = new IQueryable.AccessorQuery("DoesNotExist");
+
+        Assert.Throws<IQueryable.AccessorMismatch>(() =>
+        {
+            q.Access(FromSimpleTests.MiscDictionary);
+        });
+
+    }
+
+    [Test]
+    public void AccessNull()
+    {
+        var q = new IQueryable.AccessorQuery("DoesNotExist");
+
+        var result = q.AccessNull(FromSimpleTests.MiscDictionary);
+
+        Assert.AreEqual(null, result);
     }
 }

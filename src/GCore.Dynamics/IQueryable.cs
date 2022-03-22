@@ -11,6 +11,9 @@ public interface IQueryable
     dynamic? Query(string query);
     dynamic? Query(IEnumerable<string> query);
 
+    dynamic? QueryNull(string query);
+    dynamic? QueryNull(IEnumerable<string> query);
+
     public interface IAccessor
     {
         object? Access(object obj);
@@ -80,6 +83,18 @@ public interface IQueryable
             }
 
             return o;
+        }
+
+        public object? AccessNull(object obj)
+        {
+            try
+            {
+                return Access(obj);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 
