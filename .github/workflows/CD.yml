@@ -40,6 +40,11 @@ jobs:
       - name: Update Version
         run: python scripts/update_version.py "${{ needs.bump.outputs.newtag }}"
 
+      - name: Install .NET (v5.0)
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: 5.0.x
+
       - name: Install .NET (v6.0)
         uses: actions/setup-dotnet@v1.7.2
         with:
