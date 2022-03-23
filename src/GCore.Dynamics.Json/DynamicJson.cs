@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using GCore.Dynamics.Traits;
 
 namespace GCore.Dynamics.Json;
 
@@ -28,11 +29,6 @@ public static class DynamicJson
                 foreach (var item in elem.EnumerateObject())
                     dict.Add(item.Name, FromJsonElement(item.Value));
                 return new DynamicDict(dict);
-                //return new DynamicDict(
-                //    elem
-                //        .EnumerateObject()
-                //        .ToDictionary(o => o.Name, o => FromJsonElement(o.Value))
-                //    );
             case JsonValueKind.Array:
                 return new DynamicList(elem.EnumerateArray().Select(o => FromJsonElement(o)));
         }
@@ -72,4 +68,31 @@ public static class DynamicJson
 
         return json?.Query(string.Join("?", split.Skip(1)));
     }
+
+    public static dynamic? QueryNullFile(string file, string query)
+    {
+        try
+        {
+            return QueryFile(file, query);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public static dynamic? QueryNullFile(string fileQuery)
+    {
+        try
+        {
+            return QueryFile(fileQuery);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public static void WriteFile(string file, dynamic? obj, JsonSerializerOptions? options = null) =>
+        File.WriteAllText(file, Serialise(obj, options));
 }

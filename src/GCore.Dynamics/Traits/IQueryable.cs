@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
-namespace GCore.Dynamics;
+namespace GCore.Dynamics.Traits;
 
 public interface IQueryable
 {

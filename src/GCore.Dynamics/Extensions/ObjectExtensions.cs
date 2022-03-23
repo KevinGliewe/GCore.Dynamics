@@ -11,11 +11,11 @@ namespace GCore.Dynamics.Extensions;
 public static class ObjectExtensions
 {
 
-    public static readonly CultureInfo DefaultCultureInfo = new CultureInfo("en-US");
+    private static readonly CultureInfo DefaultCultureInfo = new CultureInfo("en-US");
 
-    // https://stackoverflow.com/a/1750024
-    public static bool IsNumericType(this object self)
+    public static bool IsNumericType(this object? self)
     {
+        if (self is null) return false;
         switch (Type.GetTypeCode(self.GetType()))
         {
             case TypeCode.Byte:
@@ -74,7 +74,7 @@ public static class ObjectExtensions
         return list.ToArray();
     }
 
-    public static void ToDebugString(this object? obj, IndentedTextWriter writer)
+    internal static void ToDebugString(this object? obj, IndentedTextWriter writer)
     {
         if (obj is null)
             writer.Write("null");
@@ -124,7 +124,7 @@ public static class ObjectExtensions
             writer.Write(obj);
     }
 
-    public static string ToDebugString(this object? o)
+    internal static string ToDebugString(this object? o)
     {
         using (var output = new StringWriter())
         using (var writer = new IndentedTextWriter(output))

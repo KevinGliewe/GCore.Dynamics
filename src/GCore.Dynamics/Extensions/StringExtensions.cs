@@ -2,9 +2,9 @@
 
 namespace GCore.Dynamics.Extensions;
 
-public static class StringExtensions
+internal static class StringExtensions
 {
-    public static string ToLiteral(this char c)
+    internal static string ToLiteral(this char c)
     {
         switch (c)
         {
@@ -33,7 +33,7 @@ public static class StringExtensions
         }
     }
 
-    public static string ToLiteral(this string input)
+    internal static string ToLiteral(this string input)
     {
         StringBuilder literal = new StringBuilder(input.Length);
         foreach (var c in input)

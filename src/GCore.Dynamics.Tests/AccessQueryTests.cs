@@ -1,6 +1,7 @@
 ﻿using System;
 using GCore.Dynamics;
 using GCore.Dynamics.Extensions;
+using GCore.Dynamics.Traits;
 using NUnit.Framework;
 
 namespace GCore.Dynamics.Tests;

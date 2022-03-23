@@ -1,4 +1,4 @@
-﻿namespace GCore.Dynamics;
+﻿namespace GCore.Dynamics.Traits;
 
 public interface IReadOnlyable
 {

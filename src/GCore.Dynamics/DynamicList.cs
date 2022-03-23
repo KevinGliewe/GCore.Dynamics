@@ -5,6 +5,7 @@ using System.Data;
 using System.Dynamic;
 using System.Text.RegularExpressions;
 using GCore.Dynamics.Extensions;
+using GCore.Dynamics.Traits;
 
 namespace GCore.Dynamics;
 

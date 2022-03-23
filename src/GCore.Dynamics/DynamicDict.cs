@@ -5,6 +5,7 @@ using System.Data;
 using System.Dynamic;
 using System.Reflection;
 using GCore.Dynamics.Extensions;
+using GCore.Dynamics.Traits;
 
 namespace GCore.Dynamics;
 
