@@ -55,9 +55,9 @@ jobs:
           dotnet nuget locals all --clear
           dotnet pack --configuration Release --output pack
 
-      # - name: Deploy GitHub-Nuget
-      #   run: |
-      #     dotnet nuget push pack\*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      - name: Deploy GitHub-Nuget
+        run: |
+          dotnet nuget push pack\*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
       - name: Deploy Nuget
         run: |
