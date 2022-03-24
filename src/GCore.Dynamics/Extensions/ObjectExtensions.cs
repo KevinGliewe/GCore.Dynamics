@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using GCore.Dynamics.Traits;
 
 namespace GCore.Dynamics.Extensions;
 
@@ -39,6 +40,8 @@ public static class ObjectExtensions
     {
         if(obj is null)
             return null;
+        if(obj is IToDynamic tdy)
+            return tdy.ToDynamic();
         if (obj.IsNumericType() ||
             obj is bool ||
             obj is string)
