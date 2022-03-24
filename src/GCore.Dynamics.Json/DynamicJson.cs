@@ -8,6 +8,18 @@ namespace GCore.Dynamics.Json;
 
 public static class DynamicJson
 {
+    public static JsonDocumentOptions DefaultJsonDocumentOptions { get; set; } = new JsonDocumentOptions()
+    {
+        // Ignore comments inside json so the parser doesn't crash
+        CommentHandling = JsonCommentHandling.Skip,
+    };
+
+    public static JsonSerializerOptions DefaultJsonSerializerOptions { get; set; } = new JsonSerializerOptions()
+    {
+        // Make it readable by default
+        WriteIndented = true
+    };
+
     public static dynamic? FromJsonElement(JsonElement elem)
     {
         switch (elem.ValueKind)
@@ -36,9 +48,9 @@ public static class DynamicJson
         return null;
     }
 
-    public static dynamic? Deserialize(string json)
+    public static dynamic? Deserialize(string json, JsonDocumentOptions? options = null)
     {
-        return FromJsonElement(JsonDocument.Parse(json).RootElement);
+        return FromJsonElement(JsonDocument.Parse(json, options ?? DefaultJsonDocumentOptions).RootElement);
     }
 
     public static string Serialise(object? obj, JsonSerializerOptions? options = null)
@@ -49,7 +61,7 @@ public static class DynamicJson
         if (obj is ISimplifyable s)
             obj = s.ToSimpleObject();
 
-        return JsonSerializer.Serialize(obj, options);
+        return JsonSerializer.Serialize(obj, options ?? DefaultJsonSerializerOptions);
     }
 
     public static dynamic? QueryFile(string file, string query)
